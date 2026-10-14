@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Калькулятор топлива</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="calculator-card">
+    <div class="header">
+      <span class="icon">✈️</span>
+      <h2>Расчет топлива</h2>
+    </div>
+
+    <!-- Начальные данные -->
+    <div class="section-card">
+      <div class="input-row">
+        <label>Наличие перед вылетом (кг)</label>
+        <input type="number" id="startFuel" placeholder="0" inputmode="numeric">
+      </div>
+      <div class="input-row">
+        <label>Слито контр. пробы (кг)</label>
+        <input type="number" id="sampleFuel" placeholder="0" inputmode="numeric">
+      </div>
+      <div class="input-row">
+        <label>Экономия (кг)</label>
+        <input type="number" id="economyFuel" placeholder="0" inputmode="numeric">
+      </div>
+    </div>
+
+    <!-- Наработка на земле (366 кг/ч) -->
+    <div class="section-card">
+      <div class="section-title"><span>⛽</span> Наработка на земле <small>(366 кг/ч)</small></div>
+      <div class="time-inputs">
+        <div class="input-row time-row">
+          <label>Время (ч / мин)</label>
+          <div class="time-fields">
+            <input type="number" id="groundHours" placeholder="0" inputmode="numeric">
+            <span>:</span>
+            <input type="number" id="groundMinutes" placeholder="00" inputmode="numeric" max="59">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Наработка в воздухе (638 кг/ч) -->
+    <div class="section-card">
+      <div class="section-title"><span>⏱️</span> Наработка в воздухе <small>(638 кг/ч)</small></div>
+      <div class="time-inputs">
+        <div class="input-row time-row">
+          <label>Время (ч / мин)</label>
+          <div class="time-fields">
+            <input type="number" id="airHours" placeholder="0" inputmode="numeric">
+            <span>:</span>
+            <input type="number" id="airMinutes" placeholder="00" inputmode="numeric" max="59">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Наработка ВСУ (77 кг/ч) -->
+    <div class="section-card">
+      <div class="section-title"><span>⚡</span> Наработка ВСУ <small>(77 кг/ч)</small></div>
+      <div class="time-inputs">
+        <div class="input-row time-row">
+          <label>Время (ч / мин)</label>
+          <div class="time-fields">
+            <input type="number" id="vsuHours" placeholder="0" inputmode="numeric">
+            <span>:</span>
+            <input type="number" id="vsuMinutes" placeholder="00" inputmode="numeric" max="59">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Кнопка расчета -->
+    <button class="calc-btn" onclick="calculateFuel()">Рассчитать</button>
+
+    <!-- Блок результатов -->
+    <div class="result-card" id="resultBlock">
+      <div class="result-item">
+        <span>Положено израсходовать:</span>
+        <strong><span id="targetSpent">0</span> кг</strong>
+      </div>
+      <div class="result-item">
+        <span>Израсходовано (с учетом экон.):</span>
+        <strong><span id="actualSpent">0</span> кг</strong>
+      </div>
+      <div class="result-item highlight">
+        <span>Наличие после полета:</span>
+        <strong><span id="endFuel">0</span> кг</strong>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
