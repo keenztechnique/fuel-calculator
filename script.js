@@ -1,6 +1,7 @@
 function calculateFuel() {
   // Получаем исходные данные
   const startFuel = parseFloat(document.getElementById('startFuel').value) || 0;
+  const refuel = parseFloat(document.getElementById('refuel').value) || 0;
   const sampleFuel = parseFloat(document.getElementById('sampleFuel').value) || 0;
   const economyFuel = parseFloat(document.getElementById('economyFuel').value) || 0;
 
@@ -28,7 +29,7 @@ function calculateFuel() {
   const actualSpent = targetSpentRounded - economyFuel;
 
   // Наличие после полета = Наличие до - Слито пробы - Фактически израсходовано
-  const endFuel = startFuel - sampleFuel - actualSpent;
+  const endFuel = startFuel - sampleFuel - actualSpent + refuel;
 
   // Выводим результаты на экран
   document.getElementById('targetSpent').innerText = targetSpentRounded.toLocaleString('ru-RU');
